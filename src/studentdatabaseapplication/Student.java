@@ -14,9 +14,10 @@ public class Student {
     public Student()
     {
         Scanner ob=new Scanner(System.in);
-        System.out.println("Enter student Firstname");
+        System.out.println("Enter student details: ");
+        System.out.println("Firstname");
         this.firstname=ob.nextLine();
-        System.out.println("Enter student Lastname");
+        System.out.println("Lastname");
         this.lastname=ob.nextLine();
         System.out.println("Select -\n1 - Fresher\n2 - 2nd Year\n3 - 3rd Year\n4 - Final year");
         this.gradYear=ob.nextInt();
@@ -46,8 +47,30 @@ public class Student {
                 break;
             }
         }
-        System.out.println("ENROLLED COURSES\n"+this.courses);
-        System.out.println("TUITION BALANCE: "+this.tuitionBalance);
+//        System.out.println("ENROLLED COURSES\n"+this.courses);
+//        System.out.println("TUITION BALANCE: "+this.tuitionBalance);
     }
+    public void viewBalance()
+    {
+        System.out.println("Balance Due-$"+this.tuitionBalance);
+    }
+    public void payTuition()
+    {
+        viewBalance();
+        System.out.print("Enter your payment:$");
+        Scanner ob=new Scanner(System.in);
+        int pay=ob.nextInt();
+        this.tuitionBalance=this.tuitionBalance-pay;
+        System.out.println("Thanks.!Your transaction of $"+pay+" is successful");
+    }
+    public String showInfo()
+    {
+        return "Name: "+this.firstname+" "+this.lastname +
+               "\nStudent ID: "+this.studentID +
+               "\nGraduation Year: "+ this.gradYear +
+               "\nCourses Enrolled to:\n"+ this.courses +
+               "\nBalance Due: "+this.tuitionBalance;
+    }
+
 
 }
